@@ -1,0 +1,15 @@
+<h2>{{ title }}</h2>
+<div class="beers-wrapper">
+  <a
+    routerLink="/details/{{ beer.id }}"
+    *ngFor="let beer of beers"
+    class="beer-wrapper"
+  >
+    <h3>{{ beer.name | uppercase }}</h3>
+    <img *ngIf="beer.image_url" src="{{ beer.image_url }}" height="200" />
+    <span class="abv">{{ beer.abv }}%</span>
+    <div class="tagline">{{ beer.tagline }}</div>
+    <!-- <div class="description">{{ beer.description }}</div> -->
+    <a routerLink="/detail/{{ beer.id }}"> View details </a>
+  </a>
+</div>
