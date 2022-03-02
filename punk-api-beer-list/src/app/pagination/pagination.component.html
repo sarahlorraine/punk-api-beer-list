@@ -1,4 +1,8 @@
-<div>
-  <button *ngIf="pagination.prev" (click)="goPrev()">Prev</button>
-  <button *ngIf="pagination.next" (click)="goNext()">Next</button>
+<div class="wrapper">
+  <span>Results: {{ pagination.totalResults }}</span>
+
+  <div class="buttons-wrapper">
+    <button [disabled]="!pagination.prev" (click)="goPrev()">Prev</button>
+    <button [disabled]="!pagination.next" (click)="goNext()">Next</button>
+  </div>
 </div>

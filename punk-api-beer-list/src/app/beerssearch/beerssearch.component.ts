@@ -18,7 +18,7 @@ import { PunkApiBeer, PunkApiQueryParams } from '../services/beers/types';
 })
 export class BeersSearchComponent implements OnInit {
   beers$: Observable<PunkApiBeer[]> | undefined;
-  title: string = 'Beers list';
+  title: string = 'Brewdog Beer Catalogue';
   private searchTerms = new Subject<string>();
   private searchValue: string = '';
   matchedSearches: string[] = [];

@@ -19,7 +19,6 @@ export class PaginationComponent implements OnInit {
 
   goNext = () => {
     var nextPage: number = this.getCurrentPage();
-    console.log('nextPage:' + nextPage);
 
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
@@ -32,7 +31,6 @@ export class PaginationComponent implements OnInit {
 
   goPrev = () => {
     var currentPage: number = this.getCurrentPage();
-    console.log('prevPage:' + currentPage--);
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: {
