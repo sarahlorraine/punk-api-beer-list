@@ -1,0 +1,18 @@
+<div id="search-component">
+  <form (ngSubmit)="search()" autocomplete="off">
+    <label for="search-box">Search</label>
+    <div class="search-input">
+      <input #searchBox id="search-box" (input)="setSearch(searchBox.value)" />
+      <button type="submit">Search</button>
+    </div>
+  </form>
+  <ul class="search-result">
+    <li *ngFor="let matched of matchedSearches">
+      <a [routerLink]="" (click)="search(matched)">
+        {{ matched }}
+      </a>
+    </li>
+  </ul>
+</div>
+
+<app-beerslist [searchTerm]="searchBox.value"></app-beerslist>
