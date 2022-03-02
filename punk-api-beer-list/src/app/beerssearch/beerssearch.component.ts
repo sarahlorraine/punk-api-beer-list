@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   debounceTime,
@@ -19,6 +18,7 @@ import { PunkApiBeer, PunkApiQueryParams } from '../services/beers/types';
 export class BeersSearchComponent implements OnInit {
   beers$: Observable<PunkApiBeer[]> | undefined;
   title: string = 'Brewdog Beer Catalogue';
+  currentSearchTerm: string = '';
   private searchTerms = new Subject<string>();
   private searchValue: string = '';
   matchedSearches: string[] = [];
@@ -53,8 +53,14 @@ export class BeersSearchComponent implements OnInit {
     });
   };
 
+  clearFilters = () => {
+    this.updateParams('', '1', '20');
+  };
+
   ngOnInit(): void {
-    console.log('matched:' + this.matchedSearches);
+    this.currentSearchTerm =
+      this.activatedRoute.snapshot.queryParams['beer_name'];
+
     this.searchTerms
       .pipe(
         // wait 100ms after each keystroke before considering the term

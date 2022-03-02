@@ -2,7 +2,6 @@
 <div class="search-wrapper">
   <div class="search-component">
     <form (ngSubmit)="search()" autocomplete="off">
-      <label for="search-box"></label>
       <div class="search-input">
         <input
           #searchBox
@@ -12,14 +11,23 @@
         />
         <button class="search-button" type="submit">Search</button>
       </div>
+      <ul *ngIf="matchedSearches.length > 0" class="search-result">
+        <li *ngFor="let matched of matchedSearches">
+          <a [routerLink]="" (click)="search(matched)">
+            {{ matched }}
+          </a>
+        </li>
+      </ul>
     </form>
-    <ul *ngIf="matchedSearches.length > 0" class="search-result">
-      <li *ngFor="let matched of matchedSearches">
-        <a [routerLink]="" (click)="search(matched)">
-          {{ matched }}
-        </a>
-      </li>
-    </ul>
+    <div *ngIf="currentSearchTerm" class="filter-wrapper">
+      <span>
+        Filter:
+        <span class="filter-item">{{ currentSearchTerm }}</span></span
+      >
+      <a class="filter-clear" [routerLink]="" (click)="clearFilters()"
+        >Clear x</a
+      >
+    </div>
   </div>
 </div>
 

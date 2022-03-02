@@ -30,17 +30,21 @@
 .beers-wrapper {
   margin: 0 auto;
   display: block;
+  min-height: 400px;
 
   @media screen and (min-width: 420px) {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    place-content: center;
   }
 
   @media screen and (min-width: 768px) {
     display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: 1024px) {
+    display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    place-content: center;
   }
 }
 
@@ -93,15 +97,4 @@ img {
 
 .tagline {
   font-size: 14px;
-}
-
-.description {
-  display: -webkit-box;
-  height: 50px;
-  font-size: 14px;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 16px;
 }
