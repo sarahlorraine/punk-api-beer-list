@@ -1,17 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {
-  debounceTime,
-  distinctUntilChanged,
-  first,
-  map,
-  Observable,
-  Subject,
-  switchMap,
-} from 'rxjs';
+import { Observable } from 'rxjs';
 import { BeersService } from '../services/beers/beers.service';
-import { PunkApiBeer } from '../services/beers/types';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { HttpResponse } from '@angular/common/http';
+import { Pagination, PunkApiBeer } from '../services/beers/types';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-beerslist',
@@ -19,10 +10,12 @@ import { HttpResponse } from '@angular/common/http';
   styleUrls: ['./beerslist.component.scss'],
 })
 export class BeerslistComponent implements OnInit {
-  @Input() searchTerm: string = '';
+  private searchTerm: string = '';
+  private currentPage: number = 1;
+  private maxPerPage: number = 20;
+
   beers$: Observable<PunkApiBeer[]> | undefined;
   title: string = 'Beers list';
-  private pageNumber = 1;
 
   constructor(
     private beersService: BeersService,
@@ -30,16 +23,19 @@ export class BeerslistComponent implements OnInit {
     private router: Router
   ) {}
 
-  getBeers = (): void => {
-    this.beers$ = this.beersService.getBeers(this.pageNumber, this.searchTerm);
-  };
-
   ngOnInit(): void {
     // Allow params change to trigger state change in the component
-    this.router.routeReuseStrategy.shouldReuseRoute = (route) => {
-      return false;
-    };
-    this.searchTerm = this.route.snapshot.queryParams['search'] ?? '';
-    this.beers$ = this.beersService.getBeers(this.pageNumber, this.searchTerm);
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+
+    this.searchTerm = this.route.snapshot.queryParams['beer_name'] ?? '';
+    this.currentPage =
+      this.route.snapshot.queryParams['page'] ?? this.currentPage;
+    this.maxPerPage =
+      this.route.snapshot.queryParams['per_page'] ?? this.maxPerPage;
+    this.beers$ = this.beersService.getBeers(
+      this.currentPage,
+      this.maxPerPage,
+      this.searchTerm
+    );
   }
 }

@@ -64,13 +64,17 @@ export class BeersService {
   };
 
   /** GET beers from PunkApi */
-  getBeers = (page: number, searchTerm: string): Observable<PunkApiBeer[]> => {
+  getBeers = (
+    page: number,
+    perPage: number,
+    searchTerm: string
+  ): Observable<PunkApiBeer[]> => {
     var remaining = this.getRateLimit();
     if (remaining > 0) {
     }
     return this.http
       .get<PunkApiBeer[]>(
-        `${this.punkApiUrl}?page=${page}&per_page=30${
+        `${this.punkApiUrl}?page=${page}&per_page=${perPage}${
           searchTerm && `&beer_name=${searchTerm}`
         }`,
         { observe: 'response' }

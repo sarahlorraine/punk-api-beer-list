@@ -36,9 +36,14 @@ input:focus {
   color: black;
   & li {
     list-style-type: none;
-    & a :hover {
-      background-color: #435a60;
-      color: white;
+    & a {
+      display: block;
+      padding: 12px;
+      &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: #435a60;
+      }
     }
   }
 }

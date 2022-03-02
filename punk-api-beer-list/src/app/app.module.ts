@@ -8,9 +8,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BeerslistComponent } from './beerslist/beerslist.component';
 import { BeersSearchComponent } from './beerssearch/beerssearch.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
-  declarations: [AppComponent, BeerslistComponent, BeersSearchComponent],
+  declarations: [AppComponent, BeerslistComponent, BeersSearchComponent, PaginationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

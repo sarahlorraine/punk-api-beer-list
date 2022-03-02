@@ -46,3 +46,16 @@ export interface PunkApiHop {
   add: string;
   attribute: string;
 }
+
+export interface Pagination {
+  currentPage: number;
+  prev: boolean;
+  next: boolean;
+  totalResults: number;
+}
+
+export interface PunkApiQueryParams {
+  page?: string;
+  per_page?: string;
+  beer_name?: string;
+}

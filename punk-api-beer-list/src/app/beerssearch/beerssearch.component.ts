@@ -9,7 +9,7 @@ import {
   Subject,
 } from 'rxjs';
 import { BeersService } from '../services/beers/beers.service';
-import { PunkApiBeer } from '../services/beers/types';
+import { PunkApiBeer, PunkApiQueryParams } from '../services/beers/types';
 
 @Component({
   selector: 'app-beerssearch',
@@ -33,16 +33,22 @@ export class BeersSearchComponent implements OnInit {
   setSearch = (value: string) => this.searchTerms.next(value);
 
   search = (value?: string): void => {
+    var perPage: string | null =
+      this.activatedRoute.snapshot.queryParams['per_page'];
     // If we pass in a value then we want to search for a clicked item
     // from the suggested search list, otherwise use the search input value
-    this.updateParams(value ?? this.searchValue);
+    this.updateParams(value ?? this.searchValue, '1', perPage ?? '20');
     this.beersService.setNewSearches(value ?? this.searchValue);
   };
 
-  updateParams = (term: string) => {
+  updateParams = (term: string, page: string, perPage: string) => {
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
-      queryParams: { search: term },
+      queryParams: {
+        page: page,
+        per_page: perPage,
+        beer_name: term,
+      } as PunkApiQueryParams,
       queryParamsHandling: 'merge',
     });
   };
@@ -51,8 +57,8 @@ export class BeersSearchComponent implements OnInit {
     console.log('matched:' + this.matchedSearches);
     this.searchTerms
       .pipe(
-        // wait 300ms after each keystroke before considering the term
-        debounceTime(300),
+        // wait 100ms after each keystroke before considering the term
+        debounceTime(100),
         // ignore new term if same as previous term
         distinctUntilChanged(),
         map((term: string) => {
