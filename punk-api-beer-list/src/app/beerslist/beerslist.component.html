@@ -68,13 +68,26 @@
       *ngFor="let beer of beers$ | async"
       class="beer-wrapper"
     >
-      <h3>{{ beer.name | uppercase }}</h3>
       <div class="image-wrapper">
-        <img *ngIf="beer.image_url" src="{{ beer.image_url }}" height="200" />
+        <img
+          *ngIf="beer.image_url"
+          alt="{{ beer.name }} image"
+          src="{{ beer.image_url }}"
+          height="200"
+        />
+        <img
+          *ngIf="!beer.image_url"
+          alt="{{ beer.name }} image"
+          src="../assets/images/punkApi_beer.svg"
+          height="200"
+        />
       </div>
-      <span class="abv">{{ beer.abv }}%</span>
-      <div class="tagline">{{ beer.tagline }}</div>
-      <a routerLink="/detail/{{ beer.id }}"> View details </a>
+      <div class="details-wrapper">
+        <p class="beer-name">{{ beer.name | uppercase }}</p>
+        <span>{{ beer.tagline }}</span>
+        <span><strong>ABV:</strong> {{ beer.abv }}%</span>
+        <span><strong>First brew:</strong> {{ beer.first_brewed }}</span>
+      </div>
     </a>
   </div>
   <app-pagination [totalResults]="beers.length"></app-pagination>

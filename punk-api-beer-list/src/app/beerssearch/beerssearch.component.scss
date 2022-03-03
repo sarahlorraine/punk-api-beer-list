@@ -53,6 +53,7 @@ input {
 }
 
 .search-result {
+  z-index: 2;
   position: absolute;
   display: block;
   top: 120px;
@@ -115,7 +116,17 @@ input {
   font-size: 12px;
   padding: 4px 8px;
   color: black;
+  transition: background-color 0.1s ease-in-out;
   background-color: rgba(245, 245, 245, 1);
+
+  &:after {
+    content: "x";
+    margin-left: 12px;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(233, 233, 233);
+  }
 }
 
 .filter-wrapper {
@@ -124,9 +135,10 @@ input {
 }
 
 .filter-clear {
+  font-size: 14px;
   margin-left: auto;
   &:hover {
     cursor: pointer;
-    font-weight: 500;
+    border-bottom: solid 1px #000;
   }
 }

@@ -6,7 +6,7 @@
         <input
           #searchBox
           id="search-box"
-          placeholder="Search by name"
+          placeholder="Search beer name"
           (input)="setSearch(searchBox.value)"
         />
         <button class="search-button" type="submit">Search</button>
@@ -20,12 +20,11 @@
       </ul>
     </form>
     <div *ngIf="currentSearchTerm" class="filter-wrapper">
-      <span>
-        Filter:
-        <span class="filter-item">{{ currentSearchTerm }}</span></span
-      >
+      <a class="filter-item" [routerLink]="" (click)="clearFilters()">{{
+        currentSearchTerm
+      }}</a>
       <a class="filter-clear" [routerLink]="" (click)="clearFilters()"
-        >Clear x</a
+        >Clear filter</a
       >
     </div>
   </div>
