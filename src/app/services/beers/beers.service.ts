@@ -7,7 +7,8 @@ import { PunkApiBeer } from './types';
 
 @Injectable({ providedIn: 'root' })
 export class BeersService {
-  private punkApiUrl = 'https://api.punkapi.com/v2/beers'; // BaseUrl to PunkApi
+  // BaseUrl to PunkApi
+  private punkApiUrl = 'https://api.punkapi.com/v2/beers';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -70,7 +71,8 @@ export class BeersService {
     var remaining = this.getRateLimit();
     if (remaining == 0) {
       // TODO: This is not really handled right now and just prevents
-      // the request from firing. Ideally we would show a message to the user
+      // the request from firing. Ideally we would either show a message to the user
+      // or create some kind of retry system
       throw throwError(() => new Error('Rate limit reached'));
     } else {
       return this.http
@@ -91,7 +93,6 @@ export class BeersService {
   };
 
   // Handle Http operation that failed.
-
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console

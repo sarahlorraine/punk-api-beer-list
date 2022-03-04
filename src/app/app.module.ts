@@ -6,11 +6,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BeerslistComponent } from './beerslist/beerslist.component';
-import { BeersSearchComponent } from './beerssearch/beerssearch.component';
-import { PaginationComponent } from './pagination/pagination.component';
-import { PageheaderComponent } from './pageheader/pageheader.component';
-import { LoadingComponent } from './loading/loading.component';
+import { BeerslistComponent } from './components/beerslist/beerslist.component';
+import { BeersSearchComponent } from './components/beerssearch/beerssearch.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { PageheaderComponent } from './components/pageheader/pageheader.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [

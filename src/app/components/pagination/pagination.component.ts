@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Pagination, PunkApiQueryParams } from '../services/beers/types';
+import { Pagination, PunkApiQueryParams } from 'src/app/services/beers/types';
 
 @Component({
   selector: 'app-pagination',
@@ -63,7 +63,7 @@ export class PaginationComponent implements OnInit {
       isNaN(Number(currentPage))
         ? this.pagination.currentPage
         : Number(currentPage),
-      isNaN(Number(currentPage)) ? 20 : Number(maxPerPage) // Default maxPerPage is 20
+      isNaN(Number(maxPerPage)) ? 20 : Number(maxPerPage) // Default maxPerPage is 20
     );
   }
 }

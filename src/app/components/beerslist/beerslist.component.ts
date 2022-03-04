@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, filter, Observable } from 'rxjs';
-import { BeersService } from '../services/beers/beers.service';
-import { Pagination, PunkApiBeer } from '../services/beers/types';
+import { BeersService } from '../../services/beers/beers.service';
+import { Pagination, PunkApiBeer } from '../../services/beers/types';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 @Component({
@@ -23,7 +23,6 @@ export class BeerslistComponent implements OnInit {
   ) {}
 
   getBeers = (): void => {
-    console.log('event');
     this.beers$ = this.beersService.getBeers(
       this.currentPage,
       this.maxPerPage,
@@ -39,6 +38,10 @@ export class BeerslistComponent implements OnInit {
       this.route.snapshot.queryParams['page'] ?? this.currentPage;
     this.maxPerPage =
       this.route.snapshot.queryParams['per_page'] ?? this.maxPerPage;
+    // TODO: Possible solution to manually keeping trakc of request rate limits
+    // By delaying the requests by 1 second the rate limit will never be reached however
+    // Currently does not work as expected with the router events and another solution in the BeerService
+    // will most likely be a better approach
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
@@ -47,6 +50,7 @@ export class BeerslistComponent implements OnInit {
       )
       .subscribe(() => this.getBeers());
 
+    // How the request currently works
     if (!this.beers$) {
       this.beers$ = this.beersService.getBeers(
         this.currentPage,

@@ -7,8 +7,8 @@ import {
   Observable,
   Subject,
 } from 'rxjs';
-import { BeersService } from '../services/beers/beers.service';
-import { PunkApiBeer, PunkApiQueryParams } from '../services/beers/types';
+import { BeersService } from 'src/app/services/beers/beers.service';
+import { PunkApiBeer, PunkApiQueryParams } from 'src/app/services/beers/types';
 
 @Component({
   selector: 'app-beerssearch',

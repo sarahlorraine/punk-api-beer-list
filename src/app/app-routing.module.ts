@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BeersSearchComponent } from './beerssearch/beerssearch.component';
+import { BeersSearchComponent } from './components/beerssearch/beerssearch.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/beers', pathMatch: 'full' },
