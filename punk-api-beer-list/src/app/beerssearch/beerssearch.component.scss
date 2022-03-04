@@ -1,18 +1,8 @@
-h2 {
-  font-family: "New Grotesk Square THREE _WEB", sans-serif;
-  font-size: 38px;
-  letter-spacing: 0.6px;
-  margin-bottom: 24px;
-  margin: 0 0 24px 0;
-
-  @media screen and (min-width: 420px) {
-    margin: 0 0 12px 12px;
-    font-size: 48px;
-  }
-}
+@import "../globals/base_variables.scss";
 
 .search-wrapper {
   display: flex;
+  align-items: center;
 }
 
 .search-component {
@@ -32,7 +22,7 @@ h2 {
 }
 
 input {
-  padding: 12px 22px;
+  padding: 8px 22px;
   line-height: 22px;
   font-size: 16px;
   width: 100%;
@@ -56,14 +46,14 @@ input {
   z-index: 2;
   position: absolute;
   display: block;
-  top: 120px;
+  top: 112px;
   margin-top: 0;
   padding-left: 0;
   margin-right: 12px;
   border: 1px solid lightgray;
   border-top: none;
   text-decoration: none;
-  color: #000;
+  color: $font;
   width: 100%;
 
   @media screen and (min-width: 420px) {
@@ -75,13 +65,13 @@ input {
     & a {
       display: block;
       padding: 12px;
-      background-color: white;
+      background-color: $white;
       transition: all 0.1s ease-in-out;
 
       &:hover {
         cursor: pointer;
-        color: white;
-        background-color: #435a60;
+        color: $white;
+        background-color: $accent2;
       }
     }
   }
@@ -91,37 +81,42 @@ input {
   font-family: "New Grotesk Square THREE _WEB", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
-  line-height: 24px;
-  font-size: 24px;
+  line-height: 22px;
+  font-size: 22px;
+  text-align: center;
   border-radius: 4px;
   border: none;
   font-weight: 400;
   padding: 14px 22px 8px 22px;
-  background-color: rgba(52, 209, 159, 1);
+  background-color: $accent;
   transition: background-color 0.1s ease-in-out;
-  color: white;
+  color: $white;
   width: 100%;
   @media screen and (min-width: 420px) {
+    padding: 6px 22px 0 22px;
     width: 30%;
   }
 
   &:hover {
-    background-color: #435a60;
+    background-color: $accent2;
     cursor: pointer;
   }
 }
 
 .filter-item {
   border-radius: 4px;
+  position: relative;
   font-size: 12px;
-  padding: 4px 8px;
+  padding: 4px 26px 4px 8px;
   color: black;
   transition: background-color 0.1s ease-in-out;
   background-color: rgba(245, 245, 245, 1);
 
   &:after {
     content: "x";
-    margin-left: 12px;
+    position: absolute;
+    top: 3px;
+    right: 8px;
   }
   &:hover {
     cursor: pointer;
@@ -135,10 +130,10 @@ input {
 }
 
 .filter-clear {
-  font-size: 14px;
+  font-size: 13px;
   margin-left: auto;
   &:hover {
     cursor: pointer;
-    border-bottom: solid 1px #000;
+    border-bottom: solid 1px $font;
   }
 }

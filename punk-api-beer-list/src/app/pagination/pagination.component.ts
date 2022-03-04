@@ -48,7 +48,7 @@ export class PaginationComponent implements OnInit {
   };
 
   setPagination = (currentPage: number, beersPerPage: number): void => {
-    // Unsure of the best way to determine if there are more results than what is shown as we will only ever receive
+    // Unsure of the best way to determine if there are more results than what is shown. We will only ever receive
     // the number of items that the route param "per_page" defines. This may result in a case where the total reuslts available
     // and a max results allowed to be shown are the same which means that the next button will show incorrectly.
     this.pagination.next = this.totalResults === beersPerPage;
@@ -60,9 +60,10 @@ export class PaginationComponent implements OnInit {
     var currentPage = this.getCurrentPage();
     var maxPerPage = this.activatedRoute.snapshot.queryParams['per_page'];
     this.setPagination(
-      Number(currentPage) ?? this.pagination.currentPage,
-      Number(maxPerPage) ?? 20
+      isNaN(Number(currentPage))
+        ? this.pagination.currentPage
+        : Number(currentPage),
+      isNaN(Number(currentPage)) ? 20 : Number(maxPerPage) // Default maxPerPage is 20
     );
-    console.log(this.pagination);
   }
 }

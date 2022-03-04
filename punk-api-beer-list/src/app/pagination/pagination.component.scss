@@ -35,17 +35,19 @@
         right: -6px;
       }
     }
-    &:hover {
-      cursor: pointer;
-      font-weight: 500;
-      &:last-child {
-        &:before {
-          right: -8px;
+    &:enabled {
+      &:hover {
+        cursor: pointer;
+        font-weight: 500;
+        &:last-child {
+          &:before {
+            right: -8px;
+          }
         }
-      }
-      &:first-child {
-        &:before {
-          left: -8px;
+        &:first-child {
+          &:before {
+            left: -8px;
+          }
         }
       }
     }
