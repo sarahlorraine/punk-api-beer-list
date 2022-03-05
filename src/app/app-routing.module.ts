@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BeersSearchComponent } from './components/beerssearch/beerssearch.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { BeersListSceneComponent } from "./beerslistscene/beerslistscene.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/beers', pathMatch: 'full' },
-  { path: 'beers', component: BeersSearchComponent },
+  { path: "", redirectTo: "/beers", pathMatch: "full" },
+  { path: "beers", component: BeersListSceneComponent },
 ];
 
 @NgModule({

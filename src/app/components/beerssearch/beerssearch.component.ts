@@ -1,26 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   debounceTime,
   distinctUntilChanged,
   map,
   Observable,
   Subject,
-} from 'rxjs';
-import { BeersService } from 'src/app/services/beers/beers.service';
-import { PunkApiBeer, PunkApiQueryParams } from 'src/app/services/beers/types';
+} from "rxjs";
+import { BeersService } from "src/app/services/beers/beers.service";
+import { PunkApiBeer, PunkApiQueryParams } from "src/app/services/beers/types";
 
 @Component({
-  selector: 'app-beerssearch',
-  templateUrl: './beerssearch.component.html',
-  styleUrls: ['./beerssearch.component.scss'],
+  selector: "app-beerssearch",
+  templateUrl: "./beerssearch.component.html",
+  styleUrls: ["./beerssearch.component.scss"],
 })
 export class BeersSearchComponent implements OnInit {
   beers$: Observable<PunkApiBeer[]> | undefined;
-  title: string = 'Brewdog Beer Catalogue';
-  currentSearchTerm: string = '';
+  currentSearchTerm: string = "";
   private searchTerms = new Subject<string>();
-  private searchValue: string = '';
+  private searchValue: string = "";
   matchedSearches: string[] = [];
 
   constructor(
@@ -34,10 +33,10 @@ export class BeersSearchComponent implements OnInit {
 
   search = (value?: string): void => {
     var perPage: string | null =
-      this.activatedRoute.snapshot.queryParams['per_page'];
+      this.activatedRoute.snapshot.queryParams["per_page"];
     // If we pass in a value then we want to search for a clicked item
     // from the suggested search list, otherwise use the search input value
-    this.updateParams(value ?? this.searchValue, '1', perPage ?? '20');
+    this.updateParams(value ?? this.searchValue, "1", perPage ?? "20");
     this.beersService.setNewSearches(value ?? this.searchValue);
   };
 
@@ -49,17 +48,17 @@ export class BeersSearchComponent implements OnInit {
         per_page: perPage,
         beer_name: term,
       } as PunkApiQueryParams,
-      queryParamsHandling: 'merge',
+      queryParamsHandling: "merge",
     });
   };
 
   clearFilters = () => {
-    this.updateParams('', '1', '20');
+    this.updateParams("", "1", "20");
   };
 
   ngOnInit(): void {
     this.currentSearchTerm =
-      this.activatedRoute.snapshot.queryParams['beer_name'];
+      this.activatedRoute.snapshot.queryParams["beer_name"];
 
     this.searchTerms
       .pipe(

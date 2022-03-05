@@ -6,10 +6,11 @@
 }
 
 .search-component {
-  margin: 0 14px 0 auto;
+  width: 100%;
 
-  @media screen and (max-width: 421px) {
-    width: 100%;
+  @media screen and (min-width: 420px) {
+    margin: 12px 14px 0 auto;
+    width: auto;
   }
 }
 
@@ -49,12 +50,12 @@ input {
   top: 112px;
   margin-top: 0;
   padding-left: 0;
-  margin-right: 12px;
   border: 1px solid lightgray;
   border-top: none;
   text-decoration: none;
   color: $font;
   width: 100%;
+  margin-right: 12px;
 
   @media screen and (min-width: 420px) {
     width: calc(250px - 12px);
