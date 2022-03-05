@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { BeersListSceneComponent } from "./beerslistscene/beerslistscene.component";
+import { BeersListSceneComponent } from "./scenes/beerslistscene/beerslistscene.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/beers", pathMatch: "full" },

@@ -11,7 +11,7 @@ import { BeersSearchComponent } from "./components/beerssearch/beerssearch.compo
 import { PaginationComponent } from "./components/pagination/pagination.component";
 import { PageheaderComponent } from "./components/pageheader/pageheader.component";
 import { LoadingComponent } from "./components/loading/loading.component";
-import { BeersListSceneComponent } from "./beerslistscene/beerslistscene.component";
+import { BeersListSceneComponent } from "./scenes/beerslistscene/beerslistscene.component";
 
 @NgModule({
   declarations: [
