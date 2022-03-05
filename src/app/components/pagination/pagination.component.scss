@@ -39,6 +39,9 @@
         right: -6px;
       }
     }
+    &:disabled {
+      opacity: 0.3;
+    }
     &:enabled {
       &:hover {
         cursor: pointer;
