@@ -5,7 +5,7 @@
   <!-- List of beers -->
   <div class="beers-wrapper">
     <!-- beer-wrapper is left as a <div> for now, however should be changed to an <a> when navigation to beer details etc is implemented -->
-    <div *ngFor="let beer of beers$ | async" class="beer-wrapper">
+    <div *ngFor="let beer of beers" class="beer-wrapper">
       <div class="image-wrapper" aria-label="beer.name image">
         <img
           *ngIf="beer.image_url"
